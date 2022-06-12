@@ -1,0 +1,29 @@
+<CustButton@Button>:
+    font_size: 32
+    background_color: 0.12, 0.12, 0.24, 1
+
+<MyGrid>
+    id: calculator
+    rows: 5
+    display: entry
+    btn_1: button_1
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        Label:
+            id: entry
+            font_size: 120
+            multiline: False
+            text: '00:00:00'
+
+    BoxLayout:
+        spacing: 10
+        CustButton:
+            id: button_1
+            text: "Start"
+            on_press: calculator.start_timer()
+        CustButton:
+            id: btn_2
+            text: "Reset"
+            on_press: calculator.stop_timer()

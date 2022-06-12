@@ -8,7 +8,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 from datetime import datetime
 import time
-from threading import Timer
 from kivy.clock import Clock
 
 
@@ -38,10 +37,10 @@ class MyGrid(GridLayout):
         return
 
 
-class MyApp(App):
+class CalculatorApp(App):
     def build(self):
         return MyGrid()
 
 
 if __name__ == "__main__":
-    MyApp().run()
+    CalculatorApp().run()
