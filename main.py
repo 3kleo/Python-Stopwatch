@@ -15,32 +15,34 @@ class MyGrid(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.started = None
-        self.num = 1
+        self.num = 0
 
     def start_timer(self):
         if self.btn_1.text == 'Start':
+            self.display.color = 0, 1, 0, 1
             self.btn_1.text = "Pause"
-            self.started = Clock.schedule_interval(self.time_counter, 1)
+            self.started = Clock.schedule_interval(self.time_counter, .1)
         else:
             self.btn_1.text = "Start"
             Clock.unschedule(self.started)
         
     def stop_timer(self):
+        self.display.color = 1, 1, 1, 1
         self.btn_1.text = "Start"
         Clock.unschedule(self.started)
-        self.num = 1
+        self.num = 0
         self.display.text = '00:00:00'
 
     def time_counter(self, dt):
-        self.display.text = time.strftime('%H:%M:%S', time.gmtime(self.num))
-        self.num += 1
+        self.display.text = time.strftime('%H:%M:%S', time.gmtime(int(self.num)))
+        self.num += .1
         return
 
 
-class CalculatorApp(App):
+class StopwatchApp(App):
     def build(self):
         return MyGrid()
 
 
 if __name__ == "__main__":
-    CalculatorApp().run()
+    StopwatchApp().run()
